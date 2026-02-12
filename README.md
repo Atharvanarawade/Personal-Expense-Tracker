@@ -3,9 +3,11 @@
 <img width="1366" height="768" alt="Screenshot (10)" src="https://github.com/user-attachments/assets/29a025fb-16c7-4877-ad44-657d203d6508" />
 <img width="1366" height="768" alt="Screenshot (9)" src="https://github.com/user-attachments/assets/1de54131-6b91-4424-b1ba-210438d56bcf" />
 # Personal-Expense-Tracker
+
 App to track your daily expense
 
 A simple web-based Expense Tracker built using Python and Streamlit.
+
 
 This application allows users to:
 
@@ -23,6 +25,7 @@ Store data permanently using a CSV file
 
 The project runs locally using Streamlit and can be deployed online using Streamlit Community Cloud.
 
+
 🛠️ Technologies Used
 
 Python
@@ -32,9 +35,3 @@ Streamlit
 Pandas
 
 CSV file storage
-
-How to Run
-
-pip install streamlit pandas
-
-streamlit run app.py
