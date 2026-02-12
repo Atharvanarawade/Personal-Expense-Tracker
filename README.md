@@ -19,10 +19,15 @@ The project runs locally using Streamlit and can be deployed online using Stream
 🛠️ Technologies Used
 
 Python
+
 Streamlit
+
 Pandas
+
 CSV file storage
 
 How to Run
+
 pip install streamlit pandas
+
 streamlit run app.py
