@@ -4,19 +4,21 @@ import os
 
 st.title("📊 Personal Expense Tracker")
 
-file = "data.csv"
-
-if os.path.exists(file):
-    df = pd.read_csv(file)
-else:
-    df = pd.DataFrame(columns=["Date", "Description", "Amount", "Type"])
-
 st.header("Add Transaction")
 
 date = st.date_input("Date")
 desc = st.text_input("Description")
 amount = st.number_input("Amount", min_value=0.0)
 type_option = st.selectbox("Type", ["Income", "Expense"])
+
+month = date.strftime("%B_%Y")      
+file = f"{month}.csv"
+
+if os.path.exists(file):
+    df = pd.read_csv(file)
+else:
+    df = pd.DataFrame(columns=["Date", "Description", "Amount", "Type"])
+
 
 if st.button("Add"):
     new_row = {
@@ -30,17 +32,25 @@ if st.button("Add"):
     df.to_csv(file, index=False)
     st.success("Added Successfully")
 
-st.header("All Transactions")
+
+st.header(f"Transactions for {month}")
 
 if not df.empty:
+
+    
+    df["Date"] = pd.to_datetime(df["Date"])
+    df = df.sort_values(by="Date")
+
     st.dataframe(df)
 
+    
     index = st.number_input("Enter Row Number to Delete", min_value=0, max_value=len(df)-1, step=1)
 
     if st.button("Delete"):
         df = df.drop(index)
         df.to_csv(file, index=False)
         st.success("Deleted Successfully")
+
 
 if not df.empty:
     income = df[df["Type"] == "Income"]["Amount"].sum()
